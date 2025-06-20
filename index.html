@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <title>Football Match Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
       body {
-        background-image: url('./background.jpg'); /* 👈 غيّر الاسم إذا استخدمت اسم آخر */
+        background-image: url('./background.jpg');
         background-size: cover;
-        background-position: center;
+        background-position: center 40%;
         background-repeat: no-repeat;
       }
 
@@ -19,13 +21,17 @@
     </style>
   </head>
   <body class="min-h-screen flex items-center justify-center text-white">
-    <div class="w-full max-w-md p-6 rounded-xl shadow-xl bg-overlay">
+    <div 
+      class="w-full max-w-md p-6 rounded-xl shadow-xl bg-overlay" 
+      data-aos="fade-up" 
+      data-aos-duration="1000"
+    >
       <h2 class="text-2xl font-bold text-center mb-6 text-400">
         لعب الشامخة
       </h2>
 
       <form action="https://getform.io/f/akknrypa" method="POST" class="space-y-4">
-        <div>
+        <div data-aos="fade-up" data-aos-delay="200">
           <label class="block mb-1 text-right">: اسمك</label>
           <input
             name="name"
@@ -36,7 +42,7 @@
           />
         </div>
 
-        <div>
+        <div data-aos="fade-up" data-aos-delay="400">
           <label class="block mb-1 text-right">: مركزك</label>
           <select
             name="position"
@@ -50,10 +56,20 @@
           </select>
         </div>
 
-        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-green-700 transition">
-          تسجيل
-        </button>
+        <div data-aos="zoom-in" data-aos-delay="600">
+          <button
+            class="w-full bg-gray-900 text-white py-2 rounded transition transform hover:scale-105 hover:bg-blue-600 duration-300"
+          >
+            تسجيل
+          </button>
+        </div>
       </form>
     </div>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
