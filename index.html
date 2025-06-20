@@ -4,29 +4,55 @@
     <meta charset="UTF-8" />
     <title>Football Match Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-image: url('./background.jpg'); /* 👈 غيّر الاسم إذا استخدمت اسم آخر */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .bg-overlay {
+        background-color: rgba(0, 0, 0, 0.40); 
+        backdrop-filter: blur(5px);
+      }
+    </style>
   </head>
-  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-md p-6 bg-white rounded-xl shadow-md">
-      <h2 class="text-2xl font-bold text-center mb-4 text-green-600">Football Match Registration</h2>
+  <body class="min-h-screen flex items-center justify-center text-white">
+    <div class="w-full max-w-md p-6 rounded-xl shadow-xl bg-overlay">
+      <h2 class="text-2xl font-bold text-center mb-6 text-400">
+        لعب الشامخة
+      </h2>
 
       <form action="https://getform.io/f/akknrypa" method="POST" class="space-y-4">
         <div>
-          <label class="block text-gray-700">: اسمك</label>
-          <input name="name" required class="w-full px-4 py-2 border rounded-md" type="text" placeholder="Enter your name" />
+          <label class="block mb-1 text-right">: اسمك</label>
+          <input
+            name="name"
+            required
+            class="w-full px-4 py-2 border rounded-md text-black"
+            type="text"
+            placeholder="ادخل اسمك"
+          />
         </div>
 
         <div>
-          <label class="block text-gray-700">: مركزك</label>
-          <select name="position" required class="w-full px-4 py-2 border rounded-md">
-            <option value="">Choose a position</option>
-            <!-- <option>Goalkeeper</option> -->
+          <label class="block mb-1 text-right">: مركزك</label>
+          <select
+            name="position"
+            required
+            class="w-full px-4 py-2 border rounded-md text-black"
+          >
+            <option value="">اختر المركز</option>
             <option>دفاع</option>
             <option>وسط</option>
             <option>هجوم</option>
           </select>
         </div>
 
-        <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Register</button>
+        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-green-700 transition">
+          تسجيل
+        </button>
       </form>
     </div>
   </body>
