@@ -2,12 +2,9 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>تسجيل مباريات كرة القدم</title>
-
-    <link rel="icon" type="image/png" href="img/background.jpg" />
+    <link rel="icon" href="img/background.jpg" />
     <link rel="shortcut icon" href="img/football_logo.png" type="image/png" />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
@@ -25,7 +22,7 @@
       }
 
       .text-shadow {
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 3.8);
       }
 
       nav {
@@ -55,30 +52,25 @@
 
       #hamburger {
         cursor: pointer;
-        font-size: 2rem; /* أصغر من السابق لتناسب الجوال */
+        font-size: 4rem;
         user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        #hamburger {
-          font-size: 2.5rem;
-        }
       }
     </style>
   </head>
 
   <body class="min-h-screen flex flex-col justify-between text-white">
-
-    <nav class="w-full p-3 md:p-4 bg-black-700 bg-opacity-80 backdrop-blur-md shadow-md fixed top-0 left-0 z-50 flex justify-between items-center">
+    <nav
+      class="w-full p-4 bg-black-700 bg-opacity-80 backdrop-blur-md shadow-md fixed top-0 left-0 z-50 flex justify-between items-center"
+    >
       <span id="hamburger" class="text-shadow" aria-label="قائمة التنقل ☰">☰</span>
-      <span class="text-sm md:text-lg font-bold text-shadow">Welcome</span>
+      <span class="text-lg font-bold text-shadow">Welcome</span>
       <ul class="hidden md:flex space-x-4">
-        <li><a href="#" class="hover:text-blue-400 text-shadow text-sm md:text-base">HOME</a></li>
+        <li><a href="#" class="hover:text-blue-400 text-shadow">HOME</a></li>
       </ul>
     </nav>
 
     <aside id="sidebar" aria-label="قائمة التبويبات الجانبية">
-      <ul class="flex flex-col space-y-6 text-right text-base md:text-lg font-semibold">
+      <ul class="flex flex-col space-y-6 text-right text-lg font-semibold">
         <li><a href="#" class="hover:text-blue-700 sidebar-link text-shadow">HOME</a></li>
         <li>
           <a
@@ -86,34 +78,37 @@
             target="_blank"
             rel="noopener noreferrer"
             class="hover:text-green-700 sidebar-link text-shadow"
-            >WhatsApp Group Invite</a
-          >
+          >WhatsApp Group Invite</a>
         </li>
       </ul>
     </aside>
 
     <main class="flex-grow flex items-center justify-center mt-28 px-4">
-      <div class="w-full max-w-sm md:max-w-md p-4 md:p-6 rounded-xl shadow-xl bg-overlay" data-aos="fade-up" data-aos-duration="1000">
-        <h2 class="text-xl md:text-2xl font-bold text-center mb-4 md:mb-6 text-shadow">لعب الشامخة ⚽</h2>
+      <div
+        class="w-full max-w-md p-6 rounded-xl shadow-xl bg-overlay"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        <h2 class="text-2xl font-bold text-center mb-6 text-shadow">لعب الشامخة ⚽</h2>
 
-        <form action="https://getform.io/f/akknrypa" method="POST" class="space-y-4">
+        <form id="myForm" class="space-y-4">
           <div data-aos="fade-up" data-aos-delay="200">
-            <label class="block mb-1 text-right text-shadow text-sm md:text-base">: اسمك</label>
+            <label class="block mb-1 text-right text-shadow">: اسمك</label>
             <input
               name="name"
               required
-              class="w-full px-3 py-2 border rounded-md text-black text-sm md:text-base"
+              class="w-full px-4 py-2 border rounded-md text-black"
               type="text"
               placeholder="ادخل اسمك"
             />
           </div>
 
           <div data-aos="fade-up" data-aos-delay="400">
-            <label class="block mb-1 text-right text-shadow text-sm md:text-base">: مركزك</label>
+            <label class="block mb-1 text-right text-shadow">: مركزك</label>
             <select
               name="position"
               required
-              class="w-full px-3 py-2 border rounded-md text-black text-sm md:text-base"
+              class="w-full px-4 py-2 border rounded-md text-black"
             >
               <option value="">اختر المركز</option>
               <option>دفاع</option>
@@ -124,17 +119,30 @@
 
           <div data-aos="zoom-in" data-aos-delay="600">
             <button
-              class="w-full bg-gray-900 text-white py-2 md:py-3 rounded text-sm md:text-base transition transform hover:scale-105 hover:bg-blue-600 duration-300 text-shadow"
+              id="submitBtn"
+              type="submit"
+              class="w-full bg-gray-900 text-white py-2 rounded transition transform hover:scale-105 hover:bg-blue-600 duration-300 text-shadow"
             >
               تسجيل
             </button>
+
+            
+            <div id="loadingSpinner" class="hidden flex justify-center mt-2">
+              <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+              </svg>
+            </div>
           </div>
         </form>
       </div>
     </main>
 
-    <footer class="text-center mb-6 text-sm md:text-base text-gray-200 font-medium tracking-wide text-shadow">
-      By Ayoob ©
+    <footer class="text-center mb-6 text-base text-gray-200 font-medium tracking-wide text-shadow">
+      By Ayoob ©  
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -159,6 +167,34 @@
         if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
           sidebar.classList.remove('open');
         }
+      });
+
+      
+      document.getElementById("myForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const submitBtn = document.getElementById("submitBtn");
+        const spinner = document.getElementById("loadingSpinner");
+
+        
+        submitBtn.style.display = "none";
+        spinner.classList.remove("hidden");
+
+        fetch("https://script.google.com/macros/s/AKfycbzzZOVspj6PmSjWae415fRW3hniuskb78Kzi8yrfDUHqo2z4zTmMwGrIYFEtsNIjCc4/exec", {
+          method: "POST",
+          body: formData
+        })
+        .then(response => {
+          window.location.href = "success.html"; 
+        })
+        .catch(error => {
+          alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
+          console.error(error);
+          submitBtn.style.display = "block";
+          spinner.classList.add("hidden");
+        });
       });
     </script>
   </body>
