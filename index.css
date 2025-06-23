@@ -1,0 +1,28 @@
+.signature {
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-family: 'Inconsolata';
+    font-variation-settings: "wght"300, "wdth"80;
+    animation: signatureEffect 4s infinite both cubic-bezier(0.17, 0.04, 0.04, 0.99);
+    color: #ccc;
+    text-align: center;
+  }
+  
+  /* ✅ Animation for signature */
+  @keyframes signatureEffect {
+    0% {
+      font-variation-settings: "wght"300, "wdth"80;
+      color: #888;
+    }
+  
+    50% {
+      font-variation-settings: "wght"800, "wdth"200;
+      color: #fff;
+    }
+  
+    100% {
+      font-variation-settings: "wght"300, "wdth"80;
+      color: #888;
+    }
+  }
+  
