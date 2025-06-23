@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>تسجيل مباريات كرة القدم</title>
     <link rel="icon" href="img/background.jpg" />
     <link rel="shortcut icon" href="img/football_logo.png" type="image/png" />
@@ -17,7 +18,7 @@
       }
 
       .bg-overlay {
-        background-color: rgba(0, 0, 0, 0.40);
+        background-color: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(5px);
       }
 
@@ -52,7 +53,7 @@
 
       #hamburger {
         cursor: pointer;
-        font-size: 4rem;
+        font-size: 2.5rem;
         user-select: none;
       }
     </style>
@@ -78,14 +79,14 @@
             target="_blank"
             rel="noopener noreferrer"
             class="hover:text-green-700 sidebar-link text-shadow"
-          >WhatsApp Group Invite</a>
+          >دعوة واتساب</a>
         </li>
       </ul>
     </aside>
 
-    <main class="flex-grow flex items-center justify-center mt-28 px-4">
+    <main class="flex-grow flex items-center justify-center mt-16 md:mt-28 px-4">
       <div
-        class="w-full max-w-md p-6 rounded-xl shadow-xl bg-overlay"
+        class="w-full max-w-md p-4 md:p-6 rounded-xl shadow-xl bg-overlay"
         data-aos="fade-up"
         data-aos-duration="1000"
       >
@@ -126,7 +127,6 @@
               تسجيل
             </button>
 
-          
             <div id="loadingSpinner" class="hidden flex justify-center mt-2">
               <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24">
@@ -141,7 +141,7 @@
       </div>
     </main>
 
-    <footer class="text-center mb-6 text-base text-gray-200 font-medium tracking-wide text-shadow">
+    <footer class="text-center mb-6 text-sm text-gray-300 font-medium tracking-wide text-shadow">
       By Ayoob ©  
     </footer>
 
@@ -169,7 +169,6 @@
         }
       });
 
-      
       document.getElementById("myForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -178,7 +177,6 @@
         const submitBtn = document.getElementById("submitBtn");
         const spinner = document.getElementById("loadingSpinner");
 
-        
         submitBtn.style.display = "none";
         spinner.classList.remove("hidden");
 
