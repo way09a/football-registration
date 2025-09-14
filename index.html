@@ -35,6 +35,35 @@
         height: 100vh; text-align: center; background: rgba(0,0,0,0.8);
         color: white; font-family: Arial, sans-serif;
       }
+
+      /* مودال النجاح */
+      #successModal { display: none; }
+      .modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 2000;
+      }
+      .modal-content {
+        background: #fff; color: #333;
+        border-radius: 12px; padding: 30px;
+        text-align: center; max-width: 400px; width: 90%;
+      }
+      .success-icon {
+        width: 120px; height: 120px; margin: 0 auto 20px;
+        border: 2px solid #22c55e; border-radius: 50%;
+        display: flex; justify-content: center; align-items: center;
+      }
+      .success-icon svg {
+        width: 60px; height: 60px;
+        stroke: #22c55e; stroke-width: 3; fill: none;
+      }
+      .modal-content h1 { color: #22c55e; font-size: 24px; margin-bottom: 10px; }
+      .modal-content p { color: #64748b; font-size: 16px; margin-bottom: 20px; }
+      .modal-content a {
+        color: #6366f1; text-decoration: none; font-weight: 600;
+      }
+      .modal-content a:hover { text-decoration: underline; }
     </style>
   </head>
 
@@ -44,7 +73,7 @@
     <div id="closed">
       <div>
         <h1 class="text-3xl mb-4">⏳ Closed</h1>
-        <p><strong>9:00 PM</strong><br><strong></strong>.</p>
+        <p><strong>6:35 PM</strong><br><strong>Sunday</strong></p>
       </div>
     </div>
 
@@ -127,6 +156,22 @@
       </footer>
     </div>
 
+    <!-- مودال النجاح -->
+    <div id="successModal">
+      <div class="modal-overlay">
+        <div class="modal-content">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <h1>Form submitted successfully!</h1>
+          <p>Thank you! The form has been submitted successfully.</p>
+          <a href="#" onclick="closeModal()">Close</a>
+        </div>
+      </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
@@ -147,9 +192,9 @@
       function checkAccess() {
         const now = new Date();
 
-        // بداية الفتح: الأحد 19:00
+        // بداية الفتح: الأحد 18:35
         let openTime = new Date(now);
-        openTime.setHours(18, 38, 0, 0);
+        openTime.setHours(18, 45, 0, 0);
         openTime.setDate(now.getDate() - ((now.getDay() + 7) % 7));
 
         if (now.getDay() === 0 && (now.getHours() < 18 || (now.getHours() === 18 && now.getMinutes() < 35))) {
@@ -171,6 +216,15 @@
       checkAccess();
       setInterval(checkAccess, 60000);
 
+      // مودال النجاح
+      function showSuccessModal() {
+        document.getElementById("successModal").style.display = "block";
+      }
+      function closeModal() {
+        document.getElementById("successModal").style.display = "none";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
       // إرسال النموذج
       document.getElementById("myForm").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -186,7 +240,12 @@
           method: "POST",
           body: formData
         })
-        .then(() => { window.location.href = "Success.html"; })
+        .then(() => {
+          spinner.classList.add("hidden");
+          submitBtn.style.display = "block";
+          form.reset();
+          showSuccessModal();
+        })
         .catch(error => {
           alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
           console.error(error);
