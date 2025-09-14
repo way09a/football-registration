@@ -43,8 +43,8 @@
     <!-- شاشة الإغلاق -->
     <div id="closed">
       <div>
-        <h1 class="text-3xl mb-4">⏳ الموقع مغلق حالياً</h1>
-        <p>سيفتح كل يوم <strong>الأحد الساعة 7 مساءً</strong><br>ويستمر مفتوحاً لمدة <strong>30 ساعة</strong>.</p>
+        <h1 class="text-3xl mb-4">⏳ Closed</h1>
+        <p><strong>9:00 PM</strong><br><strong></strong>.</p>
       </div>
     </div>
 
@@ -149,10 +149,10 @@
 
         // بداية الفتح: الأحد 19:00
         let openTime = new Date(now);
-        openTime.setHours(19, 0, 0, 0);
+        openTime.setHours(18, 36, 0, 0);
         openTime.setDate(now.getDate() - ((now.getDay() + 7) % 7));
 
-        if (now.getDay() === 0 && now.getHours() < 19) {
+        if (now.getDay() === 0 && (now.getHours() < 18 || (now.getHours() === 18 && now.getMinutes() < 35))) {
           openTime.setDate(openTime.getDate() - 7);
         }
 
