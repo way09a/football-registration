@@ -149,7 +149,7 @@
 
         // بداية الفتح: الأحد 19:00
         let openTime = new Date(now);
-        openTime.setHours(18, 37, 0, 0);
+        openTime.setHours(18, 38, 0, 0);
         openTime.setDate(now.getDate() - ((now.getDay() + 7) % 7));
 
         if (now.getDay() === 0 && (now.getHours() < 18 || (now.getHours() === 18 && now.getMinutes() < 35))) {
