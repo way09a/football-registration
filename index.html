@@ -16,134 +16,116 @@
         background-position: center 40%;
         background-repeat: no-repeat;
       }
-
-      .bg-overlay {
-        background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(5px);
-      }
-
-      .text-shadow {
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 3.8);
-      }
-
-      nav {
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-      }
-
+      .bg-overlay { background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px); }
+      .text-shadow { text-shadow: 1px 1px 4px rgba(0, 0, 0, 3.8); }
+      nav { border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
       #sidebar {
         transition: transform 0.3s ease;
         transform: translateX(100%);
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 250px;
+        position: fixed; top: 0; bottom: 0; right: 0; width: 250px;
         background-color: rgba(0, 0, 0, 0.85);
-        padding: 2rem 1.5rem;
-        z-index: 100;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
+        padding: 2rem 1.5rem; z-index: 100;
+        border-top-left-radius: 20px; border-bottom-left-radius: 20px;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
       }
-
-      #sidebar.open {
-        transform: translateX(0);
-      }
-
-      #hamburger {
-        cursor: pointer;
-        font-size: 2.5rem;
-        user-select: none;
+      #sidebar.open { transform: translateX(0); }
+      #hamburger { cursor: pointer; font-size: 2.5rem; user-select: none; }
+      #closed {
+        display: flex; justify-content: center; align-items: center;
+        height: 100vh; text-align: center; background: rgba(0,0,0,0.8);
+        color: white; font-family: Arial, sans-serif;
       }
     </style>
   </head>
 
   <body class="min-h-screen flex flex-col justify-between text-white">
-    <nav
-      class="w-full p-4 bg-black-700 bg-opacity-80 backdrop-blur-md shadow-md fixed top-0 left-0 z-50 flex justify-between items-center"
-    >
-      <span id="hamburger" class="text-shadow" aria-label="قائمة التنقل ☰">☰</span>
-      <span class="text-lg font-bold text-shadow">Welcome</span>
-      <ul class="hidden md:flex space-x-4">
-        <li><a href="#" class="hover:text-blue-400 text-shadow">HOME</a></li>
-      </ul>
-    </nav>
 
-    <aside id="sidebar" aria-label="قائمة التبويبات الجانبية">
-      <ul class="flex flex-col space-y-6 text-right text-lg font-semibold">
-        <li><a href="#" class="hover:text-blue-700 sidebar-link text-shadow">HOME</a></li>
-        <li>
-          <a
-            href="https://chat.whatsapp.com/Ck2MTjNMo4256SZpDZLdlp"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-green-700 sidebar-link text-shadow"
-          >WHATS APP GROUP</a>
-        </li>
-      </ul>
-    </aside>
-
-    <main class="flex-grow flex items-center justify-center mt-16 md:mt-28 px-4">
-      <div
-        class="w-full max-w-md p-4 md:p-6 rounded-xl shadow-xl bg-overlay"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
-        <h2 class="text-2xl font-bold text-center mb-6 text-shadow">لعب الشامخة ⚽</h2>
-
-        <form id="myForm" class="space-y-4">
-          <div data-aos="fade-up" data-aos-delay="200">
-            <label class="block mb-1 text-right text-shadow">: اسمك</label>
-            <input
-              name="name"
-              required
-              class="w-full px-4 py-2 border rounded-md text-black"
-              type="text"
-              placeholder="ادخل اسمك"
-            />
-          </div>
-
-          <div data-aos="fade-up" data-aos-delay="400">
-            <label class="block mb-1 text-right text-shadow">: مركزك</label>
-            <select
-              name="position"
-              required
-              class="w-full px-4 py-2 border rounded-md text-black"
-            >
-              <option value="">اختر المركز</option>
-              <option>دفاع</option>
-              <option>وسط</option>
-              <option>هجوم</option>
-            </select>
-          </div>
-
-          <div data-aos="zoom-in" data-aos-delay="600">
-            <button
-              id="submitBtn"
-              type="submit"
-              class="w-full bg-gray-900 text-white py-2 rounded transition transform hover:scale-105 hover:bg-blue-600 duration-300 text-shadow"
-            >
-              تسجيل
-            </button>
-
-            <div id="loadingSpinner" class="hidden flex justify-center mt-2">
-              <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                  stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor"
-                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-              </svg>
-            </div>
-          </div>
-        </form>
+    <!-- شاشة الإغلاق -->
+    <div id="closed">
+      <div>
+        <h1 class="text-3xl mb-4">⏳ الموقع مغلق حالياً</h1>
+        <p>سيفتح كل يوم <strong>الأحد الساعة 7 مساءً</strong><br>ويستمر مفتوحاً لمدة <strong>30 ساعة</strong>.</p>
       </div>
-    </main>
+    </div>
 
-    <footer class="text-center mb-6 text-sm text-gray-300 font-medium tracking-wide text-shadow">
-      By Ayoob ©  
-    </footer>
+    <!-- محتوى الموقع -->
+    <div id="site" style="display:none;">
+      <nav
+        class="w-full p-4 bg-black-700 bg-opacity-80 backdrop-blur-md shadow-md fixed top-0 left-0 z-50 flex justify-between items-center"
+      >
+        <span id="hamburger" class="text-shadow" aria-label="قائمة التنقل ☰">☰</span>
+        <span class="text-lg font-bold text-shadow">Welcome</span>
+        <ul class="hidden md:flex space-x-4">
+          <li><a href="#" class="hover:text-blue-400 text-shadow">HOME</a></li>
+        </ul>
+      </nav>
+
+      <aside id="sidebar" aria-label="قائمة التبويبات الجانبية">
+        <ul class="flex flex-col space-y-6 text-right text-lg font-semibold">
+          <li><a href="#" class="hover:text-blue-700 sidebar-link text-shadow">HOME</a></li>
+          <li>
+            <a
+              href="https://chat.whatsapp.com/Ck2MTjNMo4256SZpDZLdlp"
+              target="_blank" rel="noopener noreferrer"
+              class="hover:text-green-700 sidebar-link text-shadow"
+            >WHATS APP GROUP</a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="flex-grow flex items-center justify-center mt-16 md:mt-28 px-4">
+        <div
+          class="w-full max-w-md p-4 md:p-6 rounded-xl shadow-xl bg-overlay"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <h2 class="text-2xl font-bold text-center mb-6 text-shadow">لعب الشامخة ⚽</h2>
+          <form id="myForm" class="space-y-4">
+            <div data-aos="fade-up" data-aos-delay="200">
+              <label class="block mb-1 text-right text-shadow">: اسمك</label>
+              <input
+                name="name" required
+                class="w-full px-4 py-2 border rounded-md text-black"
+                type="text" placeholder="ادخل اسمك"
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400">
+              <label class="block mb-1 text-right text-shadow">: مركزك</label>
+              <select
+                name="position" required
+                class="w-full px-4 py-2 border rounded-md text-black"
+              >
+                <option value="">اختر المركز</option>
+                <option>دفاع</option>
+                <option>وسط</option>
+                <option>هجوم</option>
+              </select>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="600">
+              <button
+                id="submitBtn" type="submit"
+                class="w-full bg-gray-900 text-white py-2 rounded transition transform hover:scale-105 hover:bg-blue-600 duration-300 text-shadow"
+              >
+                تسجيل
+              </button>
+              <div id="loadingSpinner" class="hidden flex justify-center mt-2">
+                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                    stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <footer class="text-center mb-6 text-sm text-gray-300 font-medium tracking-wide text-shadow">
+        By Ayoob ©
+      </footer>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -153,25 +135,45 @@
       const sidebar = document.getElementById('sidebar');
       const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-      hamburger.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-      });
-
-      sidebarLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
-      });
-
+      hamburger?.addEventListener('click', () => sidebar.classList.toggle('open'));
+      sidebarLinks.forEach(link => link.addEventListener('click', () => sidebar.classList.remove('open')));
       document.addEventListener('click', (e) => {
         if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
           sidebar.classList.remove('open');
         }
       });
 
+      // فحص وقت الفتح
+      function checkAccess() {
+        const now = new Date();
+
+        // بداية الفتح: الأحد 19:00
+        let openTime = new Date(now);
+        openTime.setHours(19, 0, 0, 0);
+        openTime.setDate(now.getDate() - ((now.getDay() + 7) % 7));
+
+        if (now.getDay() === 0 && now.getHours() < 19) {
+          openTime.setDate(openTime.getDate() - 7);
+        }
+
+        // نهاية الفتح = البداية + 30 ساعة
+        let closeTime = new Date(openTime.getTime() + (30 * 60 * 60 * 1000));
+
+        if (now >= openTime && now <= closeTime) {
+          document.getElementById("closed").style.display = "none";
+          document.getElementById("site").style.display = "block";
+        } else {
+          document.getElementById("closed").style.display = "flex";
+          document.getElementById("site").style.display = "none";
+        }
+      }
+
+      checkAccess();
+      setInterval(checkAccess, 60000);
+
+      // إرسال النموذج
       document.getElementById("myForm").addEventListener("submit", function (e) {
         e.preventDefault();
-
         const form = e.target;
         const formData = new FormData(form);
         const submitBtn = document.getElementById("submitBtn");
@@ -184,9 +186,7 @@
           method: "POST",
           body: formData
         })
-        .then(response => {
-          window.location.href = "Success.html"; 
-        })
+        .then(() => { window.location.href = "Success.html"; })
         .catch(error => {
           alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
           console.error(error);
