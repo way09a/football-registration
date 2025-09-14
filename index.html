@@ -73,7 +73,7 @@
     <div id="closed">
       <div>
         <h1 class="text-3xl mb-4">⏳ Closed</h1>
-        <p><strong>6:35 PM</strong><br><strong>Sunday</strong></p>
+        <p><strong>9:00 PM</strong><br><strong>Monday</strong></p>
       </div>
     </div>
 
@@ -188,20 +188,19 @@
         }
       });
 
-      // فحص وقت الفتح
+      // فحص وقت الفتح - الاثنين الساعة 9:00 مساءً لمدة 30 ساعة
       function checkAccess() {
         const now = new Date();
 
-        // بداية الفتح: الأحد 18:35
         let openTime = new Date(now);
-        openTime.setHours(18, 45, 0, 0);
-        openTime.setDate(now.getDate() - ((now.getDay() + 7) % 7));
+        openTime.setHours(21, 0, 0, 0);
+        let dayDiff = (1 - now.getDay() + 7) % 7;
+        openTime.setDate(now.getDate() + dayDiff);
 
-        if (now.getDay() === 0 && (now.getHours() < 18 || (now.getHours() === 18 && now.getMinutes() < 35))) {
+        if (now.getDay() === 1 && now.getHours() < 21) {
           openTime.setDate(openTime.getDate() - 7);
         }
 
-        // نهاية الفتح = البداية + 30 ساعة
         let closeTime = new Date(openTime.getTime() + (30 * 60 * 60 * 1000));
 
         if (now >= openTime && now <= closeTime) {
@@ -242,8 +241,6 @@
         })
         .then(() => {
           spinner.classList.add("hidden");
-          submitBtn.style.display = "block";
-          form.reset();
           showSuccessModal();
         })
         .catch(error => {
