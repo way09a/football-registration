@@ -146,8 +146,8 @@
       function checkAccess() {
         const now = new Date();
         let openTime = new Date(now);
-        openTime.setHours(21, 0, 0, 0); // 9:00 PM
-        let dayDiff = (1 - now.getDay() + 7) % 7; // يوم الاثنين
+        openTime.setHours(6, 51, 0, 0); // 9:00 PM
+        let dayDiff = (2 - now.getDay() + 7) % 7; // يوم الاثنين
         openTime.setDate(now.getDate() + dayDiff);
         let closeTime = new Date(openTime.getTime() + (30 * 60 * 60 * 1000));
 
